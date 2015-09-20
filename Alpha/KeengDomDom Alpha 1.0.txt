@@ -1,0 +1,27 @@
+sdParent (aka "world") structure created:
+Current day
+Current player resources (not the conquered lands)
+Productivity bonuses for army recovery
+War costs
+Map (array of "sdRegion")
+
+sd stands of SaveData, data that can and must be saved.
+We prefer to store everything in unsigned short int.
+
+Current savefile size: ~7 KB
+ 
+
+File operations created
+- Anew: start a new game, replacing the savefile with a new one
+- Save: saves all the data in the world structure into the savefile
+- Load: loads the savefile to create the world structure when the program is launched
+
+The sdParent structure can be edited freely. Just remember not to load a savefile created with a different structure than the current!
+
+
+Attack and Scout actions programmed.
+NewDay funcion working correctly.
+
+
+Please submit any bug as an Issue in Github.
+
