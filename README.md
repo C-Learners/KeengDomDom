@@ -14,9 +14,11 @@ If we chose to update it, 1.0.x versions are done, and finally a new stable 1.x.
 # Game Versions
 Each version of the game is named after a Greek letter and is mantained separately from the others.
 
-Alpha: proof of concept of the game mechanics. It's really easy to play and enemies won't attack you.
-Beta: it's harder to play and enemies do attack you. You can spy their actions with gold (selling food and weapons)
-Gamma: you can upgrade your lands. In battles, strategy elements replece randomness.
+- Alpha: proof of concept of the game mechanics. It's really easy to play and enemies won't attack you.
+
+- Beta: it's harder to play and enemies do attack you. You can spy their actions with gold (selling food and weapons)
+
+- Gamma: you can upgrade your lands. In battles, strategy elements replece randomness.
 
 
 # Multi Version
