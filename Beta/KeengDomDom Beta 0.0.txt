@@ -1,0 +1,50 @@
+Changes since Alpha 1.0
+
+
+Description:
+New Features
+- Sell Weapons and Food for Gold  (new "Gold Income")
+- Send a Spy using Gold
+- Protect a place. If Castle, it automatically protects the nearby places (max 8)
+- Enemy Castle can attack a nearby Player's place (new variable AttackDays, when 0 it automatically randomize to a certain number of days, after them it will attack)
+- Messengers come back to warn for attacks (a protected place has been attacked, a non-protected place has been conquered back, a spyed castle is attaking)
+- Protected places list with Sent Force shown
+- Conquered or not-conquered places list, Scouted places List, currently Spying places list
+Edits
+- Weapon Productivity changes in: FoodProd/3 + Iron * (Copper + 3*Tin)
+- Initial properties are 2 Farms, 2 Fields, 2 Ponds, 1 Iron, 1 Tin (instead of 1 Copper)
+
+
+
+
+To Do:
+- WeaponProd() formula changes
+- Anew() initial properies (under //Default all) changes
+- sdParent structure: add new variables soldWeap and soldFood
+- sdRegion structure: add new variable atkDays
+- NewDay()>add new everyday function AtkCheck() (randomizes world.zone[i].atkDays and/or calls Battle(), sends messengers as written in Description)
+- sdRegion structure: add new variable spyGold
+- ZoneMenu()>add new actions Spy() FreeSpy() (with a formula to calculate the quantity of Gold needed to spy a place)
+	Spies can only be sent to enemy Castles. More distant places will cost more
+- ZoneMenu()> add new actions Protect() and CallBack() to send an army to protect a conquered place
+- ActionCenter() > "Open a Map" calls MapMenu() instead of ZoneMenu().
+	MapMenu() will ask the player either to check select a region (ZoneMenu() is called) or to check the map for things.
+		ListConquered() shows a list of conquered places (with types)
+		ListGaia() shows a list of not conquered places, divided in Scouted (with types) and not Scouted
+		ListSpying() shows a list of currently spying places, with Gold spent
+- ActionCenter() > new action BuyGold(), here you can use Weapon and Food productivity to buy Gold Income
+	Gold = 8 * (3*Food + Weapon)
+	The player will write first Food and then Weapon.
+
+- General: all menus with an Exit value will now repeat themselves instead of going to ActionCenter after every action.
+
+
+
+Done:
+
+
+
+
+
+Bugs:
+
