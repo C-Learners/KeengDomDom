@@ -18,26 +18,41 @@ Edits
 
 
 To Do:
+0.1
 - WeaponProd() formula changes
 - Anew() initial properies (under //Default all) changes
+
+0.2
+
 - sdParent structure: add new variables soldWeap and soldFood
+- ActionCenter() > new action BuyGold(), here you can use Weapon and Food productivity to buy Gold Income
+	Gold = 8 * (3*Food + Weapon)
+	The player will write first Food and then Weapon.
+
+0.3
 - sdRegion structure: add new variable atkDays
 - NewDay()>add new everyday function AtkCheck() (randomizes world.zone[i].atkDays and/or calls Battle(), sends messengers as written in Description)
+
+0.4
 - sdRegion structure: add new variable spyGold
 - ZoneMenu()>add new actions Spy() FreeSpy() (with a formula to calculate the quantity of Gold needed to spy a place)
 	Spies can only be sent to enemy Castles. More distant places will cost more
+
+0.5
 - ZoneMenu()> add new actions Protect() and CallBack() to send an army to protect a conquered place
+
+0.6
 - ActionCenter() > "Open a Map" calls MapMenu() instead of ZoneMenu().
 	MapMenu() will ask the player either to check select a region (ZoneMenu() is called) or to check the map for things.
 		ListConquered() shows a list of conquered places (with types)
 		ListGaia() shows a list of not conquered places, divided in Scouted (with types) and not Scouted
 		ListSpying() shows a list of currently spying places, with Gold spent
-- ActionCenter() > new action BuyGold(), here you can use Weapon and Food productivity to buy Gold Income
-	Gold = 8 * (3*Food + Weapon)
-	The player will write first Food and then Weapon.
 
+0.9
 - General: all menus with an Exit value will now repeat themselves instead of going to ActionCenter after every action.
 
+1.0
+- Fix any found bug, game working correctly
 
 
 Done:
