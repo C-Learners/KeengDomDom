@@ -21,7 +21,7 @@ Each version of the game is named after a Greek letter and is mantained separate
 - Gamma: you can upgrade your lands. In battles, strategy elements replece randomness.
 
 
-# Multi Version
+# Multi Versions
 These are ment to be played by 2-5 different users.
 "Enemies" are replaced with actual players.
 It's turn based, and players must pass the savefile to each other.
