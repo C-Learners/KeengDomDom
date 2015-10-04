@@ -1,5 +1,5 @@
 # KeengDomDom
-A command-line strategy game. Written in C and in one .c file only
+A command-line strategy game written in C.
 
 # Game Description
 Your are king Keeng, and your kingdom is the KeengDomDom.
