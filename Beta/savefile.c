@@ -51,8 +51,8 @@ int Anew() { //Confirms new file creation, creates a new game (all defaults are 
                 //Default all
                 world.day = 0;
                 world.iron = 1;
-                world.copper = 1;
-                world.tin = 0;
+                world.copper = 0;
+                world.tin = 1;
                 world.farms = 2;
                 world.fields = 2;
                 world.ponds = 2;

@@ -1,3 +1,4 @@
+#include <math.h>
 #include "worldData.h"
 
 #include "gameData.h"
@@ -7,7 +8,7 @@ int FoodProd(){ //Food productivity
     return (world.fields*world.farms*world.ponds);
 }
 int WeaponProd() { //Weapon productivity
-    return (FoodProd()*world.iron*(world.copper + 5*world.tin));
+    return (floor(FoodProd()/3) + world.iron*(world.copper + 3*world.tin));
 }
 int TotalForce() { //Get's the total player's army force, whether or not in the player's castle
     return (world.wFood * world.wWeapons - world.lostArmy);

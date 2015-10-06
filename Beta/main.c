@@ -137,7 +137,7 @@ int main()  //Loads (or creates) the game and calls ActionCenter until it return
     do {
         printf("0 - Create new game\n");
         printf("1 - Load game\n");
-        Space(22);
+        Space(21);
         printf("Choose, write and ENTER: ");
         input = ReadN();
         if (input == 0) output = Anew();
