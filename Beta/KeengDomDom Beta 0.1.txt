@@ -11,16 +11,19 @@ New Features
 - Protected places list with Sent Force shown
 - Conquered or not-conquered places list, Scouted places List, currently Spying places list
 Edits
-- Weapon Productivity changes in: FoodProd/3 + Iron * (Copper + 3*Tin)
-- Initial properties are 2 Farms, 2 Fields, 2 Ponds, 1 Iron, 1 Tin (instead of 1 Copper)
++ Weapon Productivity changes in: FoodProd/3 + Iron * (Copper + 3*Tin)
++ Initial properties are 2 Farms, 2 Fields, 2 Ponds, 1 Iron, 1 Tin (instead of 1 Copper)
 
 
+
+0.1
++ WeaponProd() formula changes
++ Anew() initial properies (under //Default all) changes
+Bugfixes:
+	+ On some terminals, when program is lounched, "0 - Create new 	game" goes off-screen" [Line 140]
 
 
 To Do:
-0.1
-- WeaponProd() formula changes
-- Anew() initial properies (under //Default all) changes
 
 0.2
 
