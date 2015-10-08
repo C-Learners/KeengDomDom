@@ -23,13 +23,13 @@ int GoScout(int index) {//Confirm and execute action
     int force; //The force the player is going to send to scout
     int days = 1 + floor(Distance(index)*SCOUTSPEED);   //the appraisal of the days needed to go and come back
 
-    printf("SYou are going to send scouts to %d %d\n", Xcoord(index), Ycoord(index));
+    printf("You are going to send scouts to %d %d\n", Xcoord(index), Ycoord(index));
     printf("A big army is usualy not required.\n");
     printf("\n\n");
     printf("They will be back in %d days, if we are lucky\n", days);
     do {
         printf("Write the Force of the army to send there [0 to cancel]\n");
-        Space(18);
+        Space(17);
         printf("Write your answer as a number and press ENTER: ");
         force=ReadN();
         if (force > CastleForce()) printf("We don't have that much Force!\nCurrent indoor Force is %d!\nTry again or write 0 to cancel\n\n\n", CastleForce());
@@ -51,7 +51,7 @@ int Attack(int index) { //Confirm and execute action
     do {
         printf("Your army will be back in about %d days.\n", days);
         printf("What will be the sent Force? [0 to cancel]\n");
-        Space(21);
+        Space(20);
         printf("Write your answer as a number and press ENTER: ");
         force=ReadN();
         if (force > CastleForce()) printf("We don't have that much Force!\nCurrent indoor Force is %d!\nTry again or write 0 to cancel\n\n", CastleForce());
@@ -96,13 +96,13 @@ int ZoneMenu(int index) { //Check this zone status and asks for actions
             printf("funny looking tree.\n"); //this happens if the region type is not acknowledged
             break;
         }
-        Space(22);
+        Space(21);
         printf("Press ENTER to go back to main menu...");
         getchar();
         /*if (world.zone[index].defOriginalArmy == 0) {   //If no army in controlling the place
             printf("There is currently no Army controlling this place.\n");
             printf("If you what to send one, insert 0. Type any other number to cancel.\n");
-            Space(19);
+            Space(18);
             printf("Choose, write and ENTER: ");
             scanf("%d", &input);
             getchar();
@@ -111,7 +111,7 @@ int ZoneMenu(int index) { //Check this zone status and asks for actions
         else if (world.zone[index].defCondition<2) { //If a legion is at this place
             printf("You already sent a legion with a total force of %d to this place\n", world.zone[index].defOriginalArmy);
             printf("If you want to call it back with a messenger, insert 1. Type any other number to cancel.\n");
-            Space(19);
+            Space(18);
             printf("Choose, write and ENTER: ");
             scanf("%d", &input);
             getchar();
@@ -183,7 +183,7 @@ int ZoneMenu(int index) { //Check this zone status and asks for actions
         printf("0 - Scout this region\n");
         printf("1 - Attack this region\n");
         printf("Write any other number to cancel.\n");
-        Space(19);
+        Space(18);
         printf("Choose, write and ENTER: ");
         input = ReadN();
         if (input==0) GoScout(index);
@@ -223,7 +223,7 @@ int MapActions() { //From here, the user can chose a position and do actions to 
         printf("Example: +1 -3\n");
         Space(1);
         printf("Write 0 0 to cancel and go back to main menu.\n");
-        Space(10-spaces);
+        Space(9-spaces);
         printf("Your coordinates:");
         ReadCoords(&x, &y);
         if ((x!=0)||(y!=0)) ZoneMenu(XYtoIndex(x, y)); //opens this zone menu by getting its index

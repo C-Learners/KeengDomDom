@@ -23,3 +23,12 @@ int CastleForce() { //Get's the player's castle army force, which is the total w
 
     return (TotalForce() - awayForce);
 }
+int GoldIncome() {
+	return 8*(world.soldFood*3 + world.soldWeapons);
+}
+int FoodLeft() {
+	return FoodProd() - world.wFood - world.soldFood;
+}
+int WeaponLeft() {
+	return WeaponProd() - world.wWeapons - world.soldWeapons;
+}

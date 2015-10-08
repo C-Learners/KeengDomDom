@@ -1,9 +1,10 @@
+Current Version: 0.2
 Changes since Alpha 1.0
 
 
 Description:
 New Features
-- Sell Weapons and Food for Gold  (new "Gold Income")
++ Sell Weapons and Food for Gold  (new "Gold Income")
 - Send a Spy using Gold
 - Protect a place. If Castle, it automatically protects the nearby places (max 8)
 - Enemy Castle can attack a nearby Player's place (new variable AttackDays, when 0 it automatically randomize to a certain number of days, after them it will attack)
@@ -22,15 +23,17 @@ Edits
 Bugfixes:
 	+ On some terminals, when program is lounched, "0 - Create new 	game" goes off-screen" [Line 140]
 
-
-To Do:
-
 0.2
-
-- sdParent structure: add new variables soldWeap and soldFood
-- ActionCenter() > new action BuyGold(), here you can use Weapon and Food productivity to buy Gold Income
++ sdParent structure: add new variables soldWeap and soldFood
++ ActionCenter() > new action BuyGold(), here you can use Weapon and Food productivity to buy Gold Income
 	Gold = 8 * (3*Food + Weapon)
 	The player will write first Food and then Weapon.
++ Created GoldIncome() function to display current Gold
++ Ceated FoodLeft() and WeaponLeft() functions due to massive usage of those informations in main.c
+BugFixes:
+	+ Decreased vertical window usage by one in all functions
+
+To Do:
 
 0.3
 - sdRegion structure: add new variable atkDays
