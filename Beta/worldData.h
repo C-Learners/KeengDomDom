@@ -46,6 +46,9 @@ struct sdParent
     //War costs (points spent in war)
     unsigned short int wFood;
     unsigned short int wWeapons;
+    //Gold costs (points spent to increase Gold income)
+    unsigned short int soldFood;    
+    unsigned short int soldWeapons; 
     //Map
     struct sdRegion zone[MAPSIZE*MAPSIZE-1]; //The two-dimensional map is stored as a normal array (of structures). The coordinate of a zone is calculated by a function. Player position has no index
 };

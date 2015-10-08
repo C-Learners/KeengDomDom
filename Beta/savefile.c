@@ -60,6 +60,8 @@ int Anew() { //Confirms new file creation, creates a new game (all defaults are 
                 world.bWeapons = 0;
                 world.wFood = 8;
                 world.wWeapons = 5;
+                world.soldFood = 0;
+                world.soldWeapons = 0;
                 for (i=0; i<(MAPSIZE*MAPSIZE-1); i++) Generate(i);
                 printf("World has been generated.\n");
                 output= Save();

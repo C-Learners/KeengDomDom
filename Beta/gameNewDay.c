@@ -162,7 +162,7 @@ int NextDay() { //Increases the Day counter, decreases every zone "dayleft", che
     char ans;
     int i;
     printf("If you are sure about going to the next day, please insert Y.\n");
-    Space(23);
+    Space(22);
     printf("Your answer: ");
     scanf("%c", &ans);
     getchar();

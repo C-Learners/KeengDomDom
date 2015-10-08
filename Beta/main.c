@@ -6,6 +6,7 @@
 #include "IOutilities.h"
 #include "gameNewDay.h"
 #include "gameAction.h"
+#include "gameData.h"
 #include "savefile.h"
 
 struct sdParent world;
@@ -49,7 +50,7 @@ int Properties() { //Prints a list of the player's Properties
     if (pnd!=1) printf("s");
     Space(1);
 
-    Space(14);
+    Space(13);
     printf("Press ENTER to go back to main menu...");
     getchar();
 
@@ -61,15 +62,15 @@ int ArmyIncrease() { //Checks if possible and let the player chose how to increa
     printf("You are currently using %d of Food productivity \nand %d of Weapon productivity.\n", world.wFood, world.wWeapons);
     printf("So the total Force is %d x %d = %d\n", world.wFood, world.wWeapons, TotalForce());
     Space(2);
-    if (WeaponProd()-world.wWeapons < 1) {printf("You need more mines to forge new weapons!\nPress ENTER to go back to main menu...\n"); getchar(); }
-    else if ((FoodProd()-world.wFood < 2) && (WeaponProd()-world.wWeapons < 3)) {printf("A Weapon productivity of 3 or a Food productivity of 2 are needed to upgrade your army!\nPress ENTER to go back to main menu\n"); getchar();}
+    if (WeaponLeft() < 1) {printf("You need more mines to forge new weapons!\nPress ENTER to go back to main menu...\n"); getchar(); }
+    else if ((FoodLeft() < 2) && (WeaponLeft() < 3)) {printf("A Weapon productivity of 3 or a Food productivity of 2 are needed to upgrade your army!\nPress ENTER to go back to main menu\n"); getchar();}
     else {
-        if (WeaponProd()-world.wWeapons >= 3)                                    printf("0 - Upgrade your Weapons  [Cost: 3 WF, 0 FP] [Force + %d]\n", (world.wFood*(world.wWeapons+3) - TotalForce()));
+        if (WeaponLeft() >= 3)             		      printf("0 - Upgrade your Weapons  [Cost: 3 WF, 0 FP] [Force + %d]\n", (world.wFood*(world.wWeapons+3) - TotalForce()));
         else Space(1);
-        if ((WeaponProd()-world.wWeapons >= 1)&&(FoodProd()-world.wFood >= 2))   printf("1 - Train more Soldiers   [Cost: 1 WF, 2 FP] [Force + %d]\n", ((world.wFood+2)*(world.wWeapons+1) - TotalForce()));
+        if ((WeaponLeft() >= 1)&&(FoodLeft() >= 2))   printf("1 - Train more Soldiers   [Cost: 1 WF, 2 FP] [Force + %d]\n", ((world.wFood+2)*(world.wWeapons+1) - TotalForce()));
         else Space(1);
         printf("Write any other number to cancel.");
-        Space(17);
+        Space(16);
         printf("Choose, write and ENTER: ");
         input=ReadN();
         if (input==0) world.wWeapons+=3;
@@ -82,25 +83,58 @@ int ArmyIncrease() { //Checks if possible and let the player chose how to increa
     return 0;
 }
 
+int BuyGold() {
+	int inFood, inWeapon;
 
+
+	printf("Here you can sell Food and Weapons for Gold.\n\n");
+	do {	
+		printf("First, write the Food you are going to change for Gold.\n");
+		printf("1 Food = 24 Gold\n");
+		Space(19);
+		printf("Selling Food Productivity: ");
+		inFood = ReadN();
+		if (inFood > FoodLeft()) {
+			printf("You can't afford all that Food right now, it's just %d\n\n", FoodLeft());
+		}
+	} while (inFood > FoodLeft());
+	printf("Incoming %d Gold from Food selling...\n\n", 24*inFood);	
+	do {
+	printf("Now write the Weapon outcome.\n");
+	printf("1 Weapon = 8 Gold\n");
+	Space(19);
+	printf("Selling Weapon Productivity: ");
+	inWeapon = ReadN();
+		if (inWeapon > WeaponLeft()) {
+			printf("You can't afford all those Weapons right now, their productivity is just %d\n\n", WeaponLeft());
+		}
+	} while (inWeapon > WeaponLeft());
+	
+	world.soldFood += inFood;
+	world.soldWeapons += inWeapon;
+	Save();
+	return 0;
+}
 
 int ActionCenter() { //Main menu screen
     int input, output=1;
     char errmess;
     printf("==== Main Menu ====\n");
     printf("Day %d\n", world.day);
-    printf("Current Food productivity: %d/%d\n", (FoodProd()-world.wFood), FoodProd());
-    printf("Current Weapon productivity: %d/%d\n", (WeaponProd()-world.wWeapons), WeaponProd());
+    printf("Current Food productivity: %d/%d\n", FoodLeft(), FoodProd());
+    printf("Current Weapon productivity: %d/%d\n", WeaponLeft(), WeaponProd());
     printf("Current indoor Force: %d\n", CastleForce());
+    printf("Current Gold Income: %d\n", GoldIncome());
     Space(2);
     printf("0 - Check your properties\n");
     printf("1 - Open a map\n");
     printf("2 - Upgrade Your army Force\n");
+    printf("3 - Buy Gold\n");
     Space(2);
     printf("________________________________________________________________________________\n");
     printf("10 - New day\n");
     printf("11 - Exit game\n");
-    Space(8);
+    Space(6);
     printf("Choose, write and ENTER: ");
     input=ReadN();
 
@@ -114,6 +148,9 @@ int ActionCenter() { //Main menu screen
     case (2) :
         ArmyIncrease();
         break;
+    case (3) :
+       	BuyGold();
+       	break;
     case (10) :
         NextDay();
         break;

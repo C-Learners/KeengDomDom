@@ -5,5 +5,8 @@ int FoodProd();
 int WeaponProd();
 int TotalForce();
 int CastleForce();
+int GoldIncome();
+int FoodLeft();
+int WeaponLeft();
 
 #endif //_GAMEDATA_H_
