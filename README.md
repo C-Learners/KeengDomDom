@@ -35,10 +35,9 @@ Multi Gamma: based on the gamma version. Spies and gold mechanics are deleted
 - Set up Git app: https://help.github.com/articles/set-up-git/
 - Fork the project: https://help.github.com/articles/fork-a-repo/
 - In Git app, clone the project you forked (+ > Clone > Yourname > KeengDomDom)
-- Edit main.c of the version your are going to change
-- Put it in your folder
-- In Git app, show uncommitted changes to commit them
-- Sync your folder
+  - Or do it manually with git. See try.github.io for a tutorial 
+- Make your changes to the version your are going to contibute
+- In Git app (or manually), show uncommitted changes to commit them and then sync
 - In this site, create a Pull Request and follow the steps to pull your changes in your version to the C-Learners version
 - The project owner will then approve it.
 
