@@ -10,6 +10,7 @@
 #include "gameData.h"
 #include "coord.h"
 
+int column[MAPSIZE*MAPSIZE-1]; //Check function LinesArrayCreate()
 
 int BonusRecovery() {
     int rec; //how much the force will recover
@@ -158,6 +159,72 @@ int AttackResults(int index) {
     return 0;
 }
 
+int LinesArrayCreate() {
+	int i, c=0;	
+	
+	for (i=0; i<MAPSIZE*MAPSIZE-1; i++) { //Creating a new array with numbers from 0 to 18, skipping the player's position
+		if (i==GetPindex()) c++;
+		column[i] = c%MAPSIZE;
+		c++;	
+	} //this way we know which zones are in a nearby column
+	
+return 0;
+}
+
+int EnemyAttacks(int castle, int target) {
+	int *playerSurvivors, *enemySurvivors, lost;
+    //Battle calculations
+    playerSurvivors = (int*) malloc(sizeof(int));
+    enemySurvivors = (int*) malloc(sizeof(int));
+    *playerSurvivors= world.zone[target].armyPower;
+    *enemySurvivors= world.zone[castle].armyPower;
+    lost = Battle(world.zone[castle].armyPower, world.zone[target].armyPower, enemySurvivors, playerSurvivors);
+    
+   if (lost==1) {
+    	if (*playerSurvivors > 0) printf("Our soldiers from %d %d returned exhausted.\nThey have been attacked by the enemy, who", Xcoord(target), Ycoord(target));
+    	else printf("We received a letter from an enemy.\nThey wrote they completely destroyed our army at %d %d and ", Xcoord(target), Ycoord(target));
+    	printf("conquered back that region.\nWe should be careful and send reinforcement to any nearby zone.\n");
+    	world.zone[target].armyPower = floor(world.zone[castle].armyPower/2);
+    	world.zone[target].rOwner = 1;
+    	if (world.zone[target].ogAction==3) {
+    		world.zone[target].ogAction=1; //If the player was going to protect that zone, the army sent will now scout it.
+			world.zone[target].defOriginalArmy = 0;
+			world.zone[target].defCondition = 0; //re-initializing and canceling protection values
+				
+		} 	
+ 	}
+   else {
+   	printf("We received a letter from %d %d.\nOur army has been attacked by an enemy castle nearby, and we won.\n Better keeping an eye on that region...\n", Xcoord(target), Ycoord(target));
+		world.zone[target].armyPower = *playerSurvivors; 
+   }
+   
+   Save();
+	getchar();
+	return 0;
+}
+
+int AtkCheck(int index) { //Check if this place may attack the player
+	int toAtk=-1; //Index of the zone to attack
+	int i, d;
+	
+	for (i= index-MAPSIZE-1; i<=index+MAPSIZE+1; i++) { //Checks only nearby lines
+		if ((column[i] >= column[index]-1) && (column[i]<=column[index]+1)) { //Adds the column selection: now a square is selected 
+			if (toAtk>=0) {
+				if (world.zone[i].armyPower < world.zone[toAtk].armyPower) toAtk=i;
+			}	
+			else toAtk=i;
+		}
+	}
+	// toAtk is now the weakest player's zone nearby
+	
+	if (toAtk>-1) {
+		d = Distance(index); //Distance between enemy castle and player's position (center) 
+		if (world.zone[index].atkDays < 1) world.zone[index].atkDays = d*d;
+		else if (world.zone[index].atkDays > 1) world.zone[index].atkDays--;
+		else EnemyAttacks(index, toAtk);
+	}
+}
+
 int NextDay() { //Increases the Day counter, decreases every zone "dayleft", checks for new imminent events and triggers them
     char ans;
     int i;
@@ -187,6 +254,8 @@ int NextDay() { //Increases the Day counter, decreases every zone "dayleft", che
             }
             //Dayleft scaling
             if (world.zone[i].daysLeft>0) world.zone[i].daysLeft--;
+            LinesArrayCreate();
+            if ((world.zone[i].rType==0) && (world.zone[i].rOwner == 1)) AtkCheck(i); //If it is an enemy castle
         }
     Save();
     }

@@ -14,6 +14,7 @@ int Generate(int i) { //It creates the i zone (i is its index) by using a fixed 
     if (world.zone[i].rType == 0) world.zone[i].armyPower*= (2+rand()%3); //if there is a Castle, its power is two, three or four times higher
     world.zone[i].defCondition = 0;
     world.zone[i].defOriginalArmy = 0;
+    world.zone[i].atkDays = 0;
     world.zone[i].daysLeft = 0;
     return 0;
 }
