@@ -24,6 +24,7 @@ struct sdRegion
     unsigned short int defCondition; //0: army departed, 1: army arrived, 2: messenger departed, 3: army returning
     unsigned short int defOriginalArmy; //Army at the end of "0" stage
     //Time
+    unsigned short int atkDays; //Works if enemy castle near a player's place. Days before it attacks a place.
     unsigned short int daysLeft; //The days left for current action. If 0, it means there is no action
 };
 

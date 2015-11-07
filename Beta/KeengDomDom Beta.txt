@@ -33,11 +33,12 @@ Bugfixes:
 BugFixes:
 	+ Decreased vertical window usage by one in all functions
 
-To Do:
-
 0.3
-- sdRegion structure: add new variable atkDays
-- NewDay()>add new everyday function AtkCheck() (randomizes world.zone[i].atkDays and/or calls Battle(), sends messengers as written in Description)
++ sdRegion structure: add new variable atkDays
++ NewDay()>add new everyday function AtkCheck() (randomizes world.zone[i].atkDays and/or calls Battle(), sends messengers as written in Description)
+*Might be bugged, needs to be tested*
+
+To Do:
 
 0.4
 - sdRegion structure: add new variable spyGold
